@@ -17,8 +17,9 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.TryGetComponent(out Bullet _))
         {
-            damage = 0;
+           
             spriteRenderer.color = Color.white;
+            this.enabled = false;
         }
     }
 

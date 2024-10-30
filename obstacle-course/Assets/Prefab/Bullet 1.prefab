@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 9113937045832042091}
   - component: {fileID: 2003199984854430386}
   - component: {fileID: 8561127654644242492}
-  m_Layer: 11
-  m_Name: Bullet
+  m_Layer: 10
+  m_Name: Bullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -135,7 +135,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   lifeTime: 1.5
-  dir: {x: 1, y: 0, z: 0}
+  dir: {x: -1, y: 0, z: 0}
   checkLayer:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 72
+  damage: 5

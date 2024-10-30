@@ -19,13 +19,16 @@ public partial class Health : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (LayerMaskUtil.ContainsLayer(damageLayerMask, collision.gameObject))
+       
+        if(collision.gameObject.TryGetComponent(out Enemy enemy) )
         {
-            if(collision.gameObject.TryGetComponent(out Enemy enemy))
-            {
-                GetDamage(enemy.damage);
-            }
+            GetDamage(enemy.damage);
         }
+        if(collision.gameObject.TryGetComponent(out Bullet enemyBullet))
+        {
+            GetDamage(enemyBullet.damage);
+        }
+        
     }
     private void GetDamage(float damage)
     {

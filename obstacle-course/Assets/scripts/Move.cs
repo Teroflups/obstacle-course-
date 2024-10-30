@@ -8,11 +8,13 @@ public class Move : MonoBehaviour
     [SerializeField] private KeyCode jumpKey;
     [SerializeField] private float speed;
     [SerializeField] private float jump;
+    private bool doubleJump = false;
     [SerializeField] private LayerMask layerGround;
     private Rigidbody2D rb;
     private bool ground;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float overlapRadius;
+    [SerializeField] private bool doubleJumpIsTrue;
 
     private void Awake()
     {
@@ -36,6 +38,12 @@ public class Move : MonoBehaviour
         if (Input.GetKeyDown(jumpKey) && ground)
         {
             rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+            doubleJump = true;
+        }
+        else if (Input.GetKeyDown(jumpKey) && doubleJump && doubleJumpIsTrue)
+        {
+            rb.AddForce(Vector2.up * jump, ForceMode2D.Impulse);
+            doubleJump = false;
         }
 
     }

@@ -9,35 +9,26 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float lifeTime;
     [SerializeField] private Vector3 dir;
-    [SerializeField] LayerMask groundLayer;
-    [SerializeField] LayerMask enemyLayer;
-
+    [SerializeField] LayerMask checkLayer;
+    public int damage = 1;
 
 
     private void FixedUpdate()
     {
-        CheckGround();
-        CheckEnemy();
+        CheckGroundAndEnemy();
         transform.Translate(dir * speed * Time.deltaTime);
         Destroy(gameObject, lifeTime);
     }
 
   
 
-    private void CheckGround()
+    private void CheckGroundAndEnemy()
     {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.1f, groundLayer);
+        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.1f, checkLayer);
         if (collider.Length > 0)
         {
             Destroy(gameObject);
         }
     }
-    private void CheckEnemy()
-    {
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position, 0.1f, enemyLayer);
-        if (collider.Length > 0)
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 }
